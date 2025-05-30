@@ -17,11 +17,11 @@
 <key>bundle-identifier</key>
 <string>com.Alfie.TrollInstallerX</string>
 <key>bundle-version</key>
-<string>1.0</string>
+<string>1.0.3</string>
 <key>kind</key>
 <string>software</string>
 <key>title</key>
-<string>TrollLFWM</string>
+<string>TrollInstallerX</string>
 </dict>
 </dict>
 </array>
