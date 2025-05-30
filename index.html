@@ -1,30 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My App Hub</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>LFWM IOS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f8;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #2a9d8f;
+      padding: 1.2rem 2rem;
+      color: #fff;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    section h2 {
+      font-weight: 600;
+      border-bottom: 3px solid #2a9d8f;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1.2rem;
+      color: #264653;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgb(0 0 0 / 0.1);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
+    }
+    .card img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+      color: #264653;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+      min-height: 1.2em;
+    }
+    .card a {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background-color: #2a9d8f;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .card a:hover {
+      background-color: #21867a;
+    }
+    @media (max-width: 400px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <h1>My App Collection</h1>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <h1>My App Collection</h1>
+    </nav>
+  </header>
 
-    <main>
-        <section>
-            <h2>Apps</h2>
-            <div id="apps-section" class="card-grid"></div>
-        </section>
+  <main>
+    <section>
+      <h2>Apps</h2>
+      <div id="apps-section" class="card-grid"></div>
+    </section>
 
-        <section>
-            <h2>ESign Profiles</h2>
-            <div id="esigns-section" class="card-grid"></div>
-        </section>
-    </main>
+    <section>
+      <h2>ESign Profiles</h2>
+      <div id="esigns-section" class="card-grid"></div>
+    </section>
+  </main>
 
-    <script src="script.js"></script>
+  <script>
+    const apps = [
+      {
+        name: 'App One ✅',
+        url: 'https://example.com/app1',
+        img: 'https://via.placeholder.com/100?text=App+One',
+        descriptions: 'Updated May 2025',
+      },
+      {
+        name: 'App Two ✅',
+        url: 'https://example.com/app2',
+        img: 'https://via.placeholder.com/100?text=App+Two',
+        descriptions: 'Latest Patch Included',
+      },
+    ];
+
+    const esigns = [
+      {
+        name: 'ESign A',
+        url: 'https://example.com/esign1',
+        img: 'https://via.placeholder.com/100?text=ESign+A',
+        descriptions: 'Issued by Example Org',
+      },
+      {
+        name: 'ESign B',
+        url: 'https://example.com/esign2',
+        img: 'https://via.placeholder.com/100?text=ESign+B',
+        descriptions: 'Issued by Another Org',
+      },
+    ];
+
+    function renderSection(dataArray, containerId) {
+      const container = document.getElementById(containerId);
+      dataArray.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${item.img}" alt="${item.name}" loading="lazy" />
+          <h3>${item.name}</h3>
+          <p>${item.descriptions}</p>
+          <a href="${item.url}" target="_blank" rel="noopener noreferrer">Download</a>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    renderSection(apps, 'apps-section');
+    renderSection(esigns, 'esigns-section');
+  </script>
 </body>
 </html>
