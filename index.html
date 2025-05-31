@@ -5,7 +5,6 @@
   <title>LFWM IOS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-
     * {
       box-sizing: border-box;
     }
@@ -113,6 +112,11 @@
       <h2>ESign and KSign</h2>
       <div id="esigns-section" class="card-grid"></div>
     </section>
+
+    <section>
+      <h2>Certificates</h2>
+      <div id="certificates-section" class="card-grid"></div>
+    </section>
   </main>
 
   <script>
@@ -137,95 +141,107 @@
       },
     ];
 
-const esigns = [ 
-  {
+    const esigns = [ 
+      {
         name: 'ESign ✅',
         url: 'https://api.khoindvn.eu.org/qqlFXY',
         img: 'https://khoindvn.io.vn/img/pf/profile-pic.png',
         descriptions: 'National Science Library,Chinese Academy  of Sciences'   
-    },
-    {
+      },
+      {
         name: 'KSign ✅',
         url: 'https://api.khoindvn.eu.org/G2UAJs',
         img: 'https://khoindvn.io.vn/img/pf/ksign.png',
         descriptions: 'National Science Library,Chinese Academy  of Sciences'   
-    }, 
-    {
+      }, 
+      {
         name: 'KSign ✅',
         url: 'https://api.khoindvn.eu.org/87VrR4',
         img: 'https://khoindvn.io.vn/img/pf/ksign.png',
         descriptions: 'Vietnam Technological and Commercial Joint- stock Bank'   
-    },
-    ,{
+      },
+      {
         name: 'KSign ✅',
         url: 'https://api.khoindvn.eu.org/jvIbwS',
         img: 'https://khoindvn.io.vn/img/pf/ksign.png',
         descriptions: 'VIETTEL GROUP'   
-    },
-    ,{
+      },
+      {
         name: 'KSign V1 ✅',
         url: 'https://api.khoindvn.eu.org/djQtgO',
         img: 'https://khoindvn.io.vn/img/pf/ksign.png',
         descriptions: 'VIETTEL GROUP KSign V1'   
-    },
-    {
+      },
+      {
         name: 'KSign V2 ✅',
         url: 'https://api.khoindvn.eu.org/9qyWff',
         img: 'https://khoindvn.io.vn/img/pf/ksign.png',
         descriptions: 'VIETTEL GROUP KSign V2'
-    
-    },
-    {
+      },
+      {
         name: 'ESign',
         url: 'https://api.khoindvn.eu.org/SYKaO8',
         img: 'https://khoindvn.io.vn/img/pf/profile-pic.png',
         descriptions: 'HDFC Bank Limited'   
-    },
-    {
+      },
+      {
         name: 'ESign',
         url: 'https://api.khoindvn.eu.org/q26Etj',
         img: 'https://khoindvn.io.vn/img/pf/profile-pic.png',
         descriptions: 'Vietnam Electricity'   
-    },
-    {
+      },
+      {
         name: 'ESign',
         url: 'https://api.khoindvn.eu.org/6BFC8C',
         img: 'https://khoindvn.io.vn/img/pf/profile-pic.png',
         descriptions: 'Kotak Mahindra Bank Ltd'
-    },
-    {
+      },
+      {
         name: 'ESign',
         url: 'https://api.khoindvn.eu.org/y8PvzI',
         img: 'https://khoindvn.io.vn/img/pf/profile-pic.png',
         descriptions: 'China Continent Property & Casualty Insurance Company Ltd'
-    },
-    {
+      },
+      {
         name: 'ESign',
         url: 'https://api.khoindvn.eu.org/XYymqT',
         img: 'https://khoindvn.io.vn/img/pf/profile-pic.png',
         descriptions: 'GAC TOYOTA MOTOR CO.,LTD'
-    },
-    {
+      },
+      {
         name: 'ESign Sunshine',
         url: 'https://api.khoindvn.eu.org/1QbTEI',
         img: 'https://khoindvn.io.vn/img/pf/profile-pic.png',
         descriptions: 'Sunshine'
-    },
-    {
+      },
+      {
         name: 'ESign',
         url: 'https://api.khoindvn.eu.org/qIELXJ',
         img: 'https://khoindvn.io.vn/img/pf/profile-pic.png',
         descriptions: 'Sunshine 1'
-    },
-    {
+      },
+      {
         name: 'ESign',
         url: 'https://api.khoindvn.eu.org/o523rG',
         img: 'https://khoindvn.io.vn/img/pf/profile-pic.png',
         descriptions: 'Sunshin 2'
-    }
-];
+      }
+    ];
 
-
+    const certificates = [
+      {
+        name: 'Developer Certificate',
+        url: 'https://example.com/certificate1',
+        img: 'https://via.placeholder.com/80?text=Cert+1',
+        descriptions: 'Issued by Apple Inc.'
+      },
+      {
+        name: 'Enterprise Certificate',
+        url: 'https://example.com/certificate2',
+        img: 'https://via.placeholder.com/80?text=Cert+2',
+        descriptions: 'Used for internal enterprise distribution'
+      }
+    ];
 
     function renderSection(dataArray, containerId) {
       const container = document.getElementById(containerId);
@@ -244,6 +260,7 @@ const esigns = [
 
     renderSection(apps, 'apps-section');
     renderSection(esigns, 'esigns-section');
+    renderSection(certificates, 'certificates-section');
   </script>
 </body>
 </html>
