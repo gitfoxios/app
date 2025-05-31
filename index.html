@@ -15,6 +15,96 @@
       color: #333;
       line-height: 1.6;
     }
+    #loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 1s ease;
+    }
+    #loader-wrapper.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #loader-text {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      color: #264653;
+      font-weight: 600;
+    }
+
+    /* Hex loader styles from Uiverse.io */
+    .socket {
+      width: 200px;
+      height: 200px;
+      position: relative;
+    }
+
+    .hex-brick {
+      background: #000000;
+      width: 30px;
+      height: 17px;
+      position: absolute;
+      top: 5px;
+      animation: fade00 2s infinite;
+    }
+
+    .h2 {
+      transform: rotate(60deg);
+    }
+
+    .h3 {
+      transform: rotate(-60deg);
+    }
+
+    .gel {
+      height: 30px;
+      width: 30px;
+      transition: all 0.3s;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+
+    .center-gel {
+      margin-left: -15px;
+      margin-top: -15px;
+      animation: pulse00 2s infinite;
+    }
+
+    .r1 { animation: pulse00 2s infinite 0.2s; }
+    .r2 { animation: pulse00 2s infinite 0.4s; }
+    .r3 { animation: pulse00 2s infinite 0.6s; }
+
+    .r1 > .hex-brick { animation: fade00 2s infinite 0.2s; }
+    .r2 > .hex-brick { animation: fade00 2s infinite 0.4s; }
+    .r3 > .hex-brick { animation: fade00 2s infinite 0.6s; }
+
+    /* Example gel positions (add more if needed) */
+    .c1 { margin-left: -47px; margin-top: -15px; }
+    .c2 { margin-left: -31px; margin-top: -43px; }
+    .c3 { margin-left: 1px; margin-top: -43px; }
+    .c4 { margin-left: 17px; margin-top: -15px; }
+    .c5 { margin-left: -31px; margin-top: 13px; }
+    .c6 { margin-left: 1px; margin-top: 13px; }
+
+    @keyframes pulse00 {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(0.01); }
+    }
+
+    @keyframes fade00 {
+      0%, 100% { background: #353535; }
+      50% { background: #000000; }
+    }
+
     header {
       background-color: #2a9d8f;
       padding: 1.2rem 2rem;
@@ -96,6 +186,24 @@
   </style>
 </head>
 <body>
+  <div id="loader-wrapper">
+    <!-- Uiverse Hex Loader -->
+    <div class="socket">
+      <div class="gel center-gel">
+        <div class="hex-brick h1"></div>
+        <div class="hex-brick h2"></div>
+        <div class="hex-brick h3"></div>
+      </div>
+      <div class="gel c1 r1"><div class="hex-brick h1"></div></div>
+      <div class="gel c2 r2"><div class="hex-brick h2"></div></div>
+      <div class="gel c3 r3"><div class="hex-brick h3"></div></div>
+      <div class="gel c4 r1"><div class="hex-brick h1"></div></div>
+      <div class="gel c5 r2"><div class="hex-brick h2"></div></div>
+      <div class="gel c6 r3"><div class="hex-brick h3"></div></div>
+    </div>
+    <div id="loader-text">LFWM Application loading...</div>
+  </div>
+
   <header>
     <nav>
       <h1>LFWM IOS</h1>
@@ -107,12 +215,10 @@
       <h2>Apps</h2>
       <div id="apps-section" class="card-grid"></div>
     </section>
-
     <section>
       <h2>ESign and KSign</h2>
       <div id="esigns-section" class="card-grid"></div>
     </section>
-
     <section>
       <h2>Certificates</h2>
       <div id="certificates-section" class="card-grid"></div>
@@ -121,7 +227,7 @@
 
   <script>
     const apps = [
-      {
+        {
         name: 'TrollStoreX',
         url: 'itms-services://?action=download-manifest&url=https://ipa.ipasign.cc/manifest/4e3186339fc3.plist',
         img: 'https://raw.githubusercontent.com/alfiecg24/TrollInstallerX/main/Resources/Icon.png',
@@ -140,9 +246,8 @@
         descriptions: 'National Science Library,Chinese Academy  of Sciences',
       },
     ];
-
-    const esigns = [ 
-      {
+    const esigns = [
+     {
         name: 'ESign ✅',
         url: 'https://api.khoindvn.eu.org/qqlFXY',
         img: 'https://khoindvn.io.vn/img/pf/profile-pic.png',
@@ -225,11 +330,11 @@
         url: 'https://api.khoindvn.eu.org/o523rG',
         img: 'https://khoindvn.io.vn/img/pf/profile-pic.png',
         descriptions: 'Sunshin 2'
-      }
+      }    
     ];
-
     const certificates = [
-      {
+        {
+        name; 'undefined',
         url: 'https://github.com/esigncert/khoindvn/raw/refs/heads/main/document/DNS/Certs-Khoindvn.zip',
         img: 'https://khoindvn.io.vn/img/pf/profile-pic.png',
         descriptions: 'National Science Library,Chinese Academy  of Sciences'
@@ -241,15 +346,14 @@
         descriptions: 'National Science Library,Chinese Academy  of Sciences'
       }
     ];
-
     function renderSection(dataArray, containerId) {
       const container = document.getElementById(containerId);
       dataArray.forEach(item => {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
-          <img src="${item.img}" alt="${item.name}" loading="lazy" />
-          <h3>${item.name}</h3>
+          <img src="${item.img}" alt="${item.name || 'Image'}" loading="lazy" />
+          <h3>${item.name || 'Download'}</h3>
           <p>${item.descriptions}</p>
           <a href="${item.url}" target="_blank" rel="noopener noreferrer">Download</a>
         `;
@@ -260,6 +364,12 @@
     renderSection(apps, 'apps-section');
     renderSection(esigns, 'esigns-section');
     renderSection(certificates, 'certificates-section');
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader-wrapper').classList.add('hidden');
+      }, 1000);
+    });
   </script>
 </body>
 </html>
