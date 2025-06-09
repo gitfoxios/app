@@ -62,7 +62,7 @@
 			<key>Precomposed</key>
 			<true/>
 			<key>URL</key>
-			<string>https://lfwm.github.io/app/debug.html/</string>
+			<string>https://lfwm.github.io/app/debug.html</string>
 		</dict>
 	</array>
 	<key>PayloadDisplayName</key>
