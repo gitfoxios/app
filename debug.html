@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>LFWM iOS Debug</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: sans-serif; background: #121212; color: #e0e0e0; }
+    nav { margin-bottom: 1rem; }
+    button { margin-right: 1rem; padding: 0.5rem 1rem; background: #1e1e1e; border: none; color: #e0e0e0; cursor: pointer; }
+    button.active { border-bottom: 3px solid #03dac6; color: #03dac6; }
+    section { display: none; }
+    section.active { display: block; }
+    .card { border: 1px solid #333; padding: 1rem; margin: 0.5rem 0; background: #1e1e1e; }
+  </style>
+</head>
+<body>
+
+<nav class="tabs">
+  <button class="tab-button active" data-tab="apps">Apps</button>
+  <button class="tab-button" data-tab="certificates">Certificates</button>
+  <button class="tab-button" data-tab="dns">DNS</button>
+  <button class="tab-button" data-tab="other">Other</button>
+</nav>
+
+<main>
+  <section id="apps" class="tab-content active">
+    <h2>Apps</h2>
+    <div id="apps-section"></div>
+  </section>
+
+  <section id="certificates" class="tab-content">
+    <h2>Certificates</h2>
+    <div id="certificates-section"></div>
+  </section>
+
+  <section id="dns" class="tab-content">
+    <h2>DNS</h2>
+    <div id="dns-section"></div>
+  </section>
+
+  <section id="other" class="tab-content">
+    <h2>Other</h2>
+    <div id="other-section"></div>
+  </section>
+</main>
+
+<script>
+  const apps = [
+    { name: 'TrollStoreX', url: '#', img: 'https://raw.githubusercontent.com/alfiecg24/TrollInstallerX/main/Resources/Icon.png', descriptions: 'Installer' },
+    { name: 'Scarlet', url: '#', img: 'https://usescarlet.com/icon.png', descriptions: 'App Store Alternative' }
+  ];
+
+  const certificates = [
+    { name: 'Certificate Pack', url: '#', img: 'https://khoindvn.io.vn/img/pf/ksign.png', descriptions: 'National Science Library' }
+  ];
+
+  const dns = [
+    { name: 'DNS Config', url: '#', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/DNS_icon.png/600px-DNS_icon.png', descriptions: 'Custom DNS Settings' }
+  ];
+
+  const otherApps = [
+    { name: 'Codex', url: '#', img: 'https://i.imgur.com/i88ipCA.jpeg', descriptions: 'Code-based tool' }
+  ];
+
+  function renderSection(data, containerId) {
+    console.log(`Rendering ${containerId}...`);
+    const container = document.getElementById(containerId);
+    container.innerHTML = ''; // clear existing content
+    data.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.innerHTML = `
+        <img src="${item.img}" alt="${item.name}" style="width: 50px; height: 50px; border-radius: 10px;"/>
+        <h3>${item.name}</h3>
+        <p>${item.descriptions}</p>
+        <a href="${item.url}" target="_blank" rel="noopener noreferrer">Download</a>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded');
+
+    renderSection(apps, 'apps-section');
+    renderSection(certificates, 'certificates-section');
+    renderSection(dns, 'dns-section');
+    renderSection(otherApps, 'other-section');
+
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        console.log('Tab clicked:', button.dataset.tab);
+        const tabId = button.dataset.tab;
+
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        tabContents.forEach(content => {
+          content.classList.remove('active');
+          if (content.id === tabId) {
+            content.classList.add('active');
+          }
+        });
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
