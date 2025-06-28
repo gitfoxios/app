@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type='text/javascript' src='//camomilegentlemennotable.com/d0/97/8a/d0978ad8edd95e0470f09aa04eb88b7f.js'></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skibiti Tech AppStore</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: #000;
+            background-color: #000;
+            color: #fff;
+            min-height: 100vh;
+            padding-bottom: 85px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            height: 90px;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .profile-pic {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #333;
+        }
+
+        .tutorial {
+            background-color: #1c1c1e;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .app-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .app-item {
+            background-color: #1c1c1e;
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .app-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            background-color: #2c2c2e;
+        }
+
+        .app-info {
+            flex: 1;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .star {
+            width: 12px;
+            height: 12px;
+            background-color: #636366;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        .star.filled {
+            background-color: #ffd60a;
+        }
+
+        .section-title {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .get-button {
+            background-color: #2c2c2e;
+            color: #0a84ff;
+            border: none;
+            border-radius: 20px;
+            padding: 6px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            min-width: 72px;
+            text-align: center;
+            margin-left: auto;
+        }
+
+        .get-button:hover {
+            background-color: #3a3a3c;
+        }
+
+        /* Bottom Navigation Bar */
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 85px;
+            background-color: rgba(28, 28, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid #2c2c2e;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 20px;
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #86868b;
+            text-decoration: none;
+            font-size: 10px;
+            padding: 6px 12px;
+            transition: color 0.2s;
+        }
+
+        .nav-item.active {
+            color: #0a84ff;
+        }
+
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        /* Upload Section Styles */
+        .upload-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .upload-area {
+            background-color: #1c1c1e;
+            border: 2px dashed #2c2c2e;
+            border-radius: 16px;
+            padding: 40px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            border-color: #0a84ff;
+            background-color: rgba(10, 132, 255, 0.05);
+        }
+
+        .upload-area.dragover {
+            border-color: #0a84ff;
+            background-color: rgba(10, 132, 255, 0.1);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .upload-area h3 {
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .upload-area p {
+            color: #86868b;
+            margin-bottom: 20px;
+        }
+
+        .upload-button {
+            background-color: #0a84ff;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .upload-button:hover {
+            background-color: #0056b3;
+        }
+
+        .upload-progress {
+            background-color: #1c1c1e;
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #2c2c2e;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #0a84ff;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #86868b;
+        }
+
+        .upload-results {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .upload-result-item {
+            background-color: #1c1c1e;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .upload-result-icon {
+            font-size: 24px;
+        }
+
+        .upload-result-info {
+            flex: 1;
+        }
+
+        .upload-result-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .upload-result-status {
+            font-size: 14px;
+            color: #86868b;
+        }
+
+        .upload-result-status.success {
+            color: #30d158;
+        }
+
+        .upload-result-status.error {
+            color: #ff453a;
+        }
+
+        /* Styling for certs dropdown and sign button */
+        #certs {
+            background-color: #2c2c2e;
+            color: #fff;
+            border: 1px solid #3a3a3c;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 16px;
+            font-family: inherit;
+            margin: 12px 0 8px 0;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        #certs:hover {
+            border-color: #0a84ff;
+            background-color: #3a3a3c;
+        }
+
+        #certs:focus {
+            outline: none;
+            border-color: #0a84ff;
+            box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.2);
+        }
+
+        #certs option {
+            background-color: #2c2c2e;
+            color: #fff;
+            padding: 8px;
+        }
+
+        #sign_button {
+            background: linear-gradient(135deg, #0a84ff, #007aff);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            margin-top: 8px;
+            box-shadow: 0 2px 8px rgba(10, 132, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #sign_button:hover {
+            background: linear-gradient(135deg, #007aff, #0056b3);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(10, 132, 255, 0.4);
+        }
+
+        #sign_button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(10, 132, 255, 0.3);
+        }
+
+        #sign_button:disabled {
+            background: #3a3a3c;
+            color: #86868b;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Add a subtle animation for the sign button */
+        #sign_button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        #sign_button:hover::before {
+            left: 100%;
+        }
+
+        /* Enhanced styling for the upload result container when it contains cert selection */
+        .upload-result-item:has(#certs) {
+            background: linear-gradient(135deg, #1c1c1e, #2c2c2e);
+            border: 1px solid #3a3a3c;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Add some spacing and organization to the cert selection area */
+        .cert-selection-container {
+            margin-top: 16px;
+            padding: 16px;
+            background-color: rgba(28, 28, 30, 0.8);
+            border-radius: 12px;
+            border: 1px solid #3a3a3c;
+        }
+
+        .cert-selection-label {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Skibidi Tech</h1>
+            </div>
+        </div>
+    </header>
+<center>
+            <script type="text/javascript">
+	atOptions = {
+		'key' : '085d0c22d969bba8fda26080a15607b1',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//camomilegentlemennotable.com/085d0c22d969bba8fda26080a15607b1/invoke.js"></script>
+</center>
+    <main class="container">
+        <div id="signers-section" class="content-section active">
+            <h2 class="section-title">Download eSign</h2>
+            <div class="app-list" id="downloadEsign"></div>
+        </div>
+
+        <div id="certificates-section" class="content-section">
+            <h2 class="section-title">Download Certs</h2>
+            <div class="app-list" id="downloadCerts"></div>
+        </div>
+
+        <div id="library-section" class="content-section">
+            <h2 class="section-title">IPA Library</h2>
+            <div class="app-list" id="ipaLibrary">
+                <div style="text-align: center; padding: 20px; color: #86868b;">
+                    Coming soon!
+                </div>
+            </div>
+        </div>
+
+        <div id="upload-section" class="content-section">
+            <h2 class="section-title">Upload IPA Files</h2>
+            <div class="upload-container">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📱</div>
+                    <h3>Upload IPA Files</h3>
+                    <p id="uploadText">Tap to select IPA files from your device</p>
+                    <label for="fileInput" class="upload-button">Choose Files</label>
+                    <input type="file" id="fileInput" accept=".ipa,application/octet-stream" multiple style="display: none;">
+                </div>
+                <div class="upload-progress" id="uploadProgress" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">Uploading...</div>
+                </div>
+                <div class="upload-results" id="uploadResults"></div>
+            </div>
+        </div>
+<br>
+<center>
+        <script type="text/javascript">
+	atOptions = {
+		'key' : '085d0c22d969bba8fda26080a15607b1',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//camomilegentlemennotable.com/085d0c22d969bba8fda26080a15607b1/invoke.js"></script>
+</center>
+
+    </main>
+
+    <nav class="navbar">
+        <a href="#" class="nav-item active" data-section="signers-section">
+            <div class="nav-icon">📱</div>
+            <span>Signers</span>
+        </a>
+        <a href="#" class="nav-item" data-section="certificates-section">
+            <div class="nav-icon">📜</div>
+            <span>Certificates</span>
+        </a>
+       <!--- <a href="#" class="nav-item" data-section="library-section">
+            <div class="nav-icon">📚</div>
+            <span>Library</span>
+        </a> --->
+        <a href="#" class="nav-item" data-section="upload-section">
+            <div class="nav-icon">⬆️</div>
+            <span>Upload</span>
+        </a>
+    </nav>
+
+    <script>
+        const apps = [
+                                    
+             { name: "eSign", category: "Wuling Power Corporation", rating: 4.9, ratingCount: "1M", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/10.plist" },
+                         { name: "Feather", category: "Wuling Power Corporation", rating: 4.9, ratingCount: "900K", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/13.plist" },
+              { name: "Scarlet", category: "Wuling Power Corporation", rating: 4.9, ratingCount: "700K", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/12.plist" },
+
+            { name: "TrollStore X", category: "Wuling Power Corporation", rating: 4.9, ratingCount: "1M", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/11.plist" },
+            
+             { name: "KSign", category: "EEO Education Ltd", rating: 4.9, ratingCount: "1M", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/21.plist" },
+
+                         { name: "KSign", category: "CENTRAL POWER INFORMATION TECHNOLOGY COMPANY - CENTRAL POWER CORPORATION", rating: 4.9, ratingCount: "1M", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/20.plist" },
+
+             { name: "KSign", category: "National Science Library,Chinese Academy of Sciences", rating: 4.9, ratingCount: "1M", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/19.plist" },
+
+                                     { name: "KSign", category: "Vietnam Technological and Commercial Joint- stock Bank", rating: 4.9, ratingCount: "1M", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/15.plist" },
+
+                         { name: "KSign", category: "VITTEL GROUP 1", rating: 4.9, ratingCount: "1M", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/ksign2.plist" },
+                         { name: "KSign", category: "VITTEL GROUP 2", rating: 4.9, ratingCount: "1M", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/16.plist" },
+
+             { name: "KSign", category: "VITTEL GROUP", rating: 4.9, ratingCount: "1M", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/ksign.plist" },
+
+
+
+            { name: "eSign", category: "Vietnam Electricity", rating: 5, ratingCount: "1.9M", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/14.plist" },
+            { name: "eSign", category: "AVEX DIGITAL INC", rating: 4.8, ratingCount: "1.2M", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/1.plist" },
+            { name: "eSign", category: "China Continent Property & Casualty Insurance Company Ltd.", rating: 4.8, ratingCount: "1.1M", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/2.plist" },
+            { name: "eSign", category: "Zhuhaishi ShijiXintong Network Technology Co., Ltd.", rating: 4.8, ratingCount: "900K", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/3.plist" },
+            { name: "eSign", category: "Sun Life Everbright Life Insurance Co.,Ltd", rating: 4.8, ratingCount: "850K", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/4.plist" },
+            { name: "eSign", category: "Ministere de I Emploi de la Protection Sociale.", rating: 4.8, ratingCount: "800K", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/5.plist" },
+            { name: "eSign", category: "Sunshine 1", rating: 4.8, ratingCount: "800K", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/6.plist" },
+            { name: "eSign", category: "Sunshine 2", rating: 4.8, ratingCount: "800K", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/7.plist" },
+            { name: "eSign", category: "Sunshine 3", rating: 4.8, ratingCount: "800K", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/8.plist" },
+            { name: "eSign", category: "Sunshine 4", rating: 4.8, ratingCount: "800K", price: "Free", link: "itms-services://?action=download-manifest&url=https://skibiditech.co/9.plist" }
+        ];
+
+       const certs = [
+           { name: "Certificate", category: "Wuling Power Corporation", rating: 4.8, ratingCount: "1.8M", price: "Free", link: "https://skibiditech.co/cert.zip" },
+                                                                                 { name: "Khoindvn Certificates", category: "Certificates", rating: 4.8, ratingCount: "1.8M", price: "Free", link: "https://skibiditech.co/all/Certs.zip" },
+
+                                                                      { name: "KSIGN Certificate", category: "Vietnam Technological and Commercial Joint- stock Bank", rating: 4.8, ratingCount: "1.8M", price: "Free", link: "https://skibiditech.co/cert/13.ksign" },
+                                                           { name: "KSIGN Certificate", category: "VVITTEL GROUP 1", rating: 4.8, ratingCount: "1.8M", price: "Free", link: "https://skibiditech.co/cert/13.ksign" },
+                              { name: "KSIGN Certificate", category: "VVITTEL GROUP", rating: 4.8, ratingCount: "1.8M", price: "Free", link: "https://skibiditech.co/cert/12.ksign" },
+                   { name: "ECertificate", category: "GAC TOYOTA MOTOR CO, LTD.", rating: 4.8, ratingCount: "1.8M", price: "Free", link: "https://skibiditech.co/cert/11.esigncert" },
+        { name: "Certificate", category: "HDFC", rating: 4.8, ratingCount: "1.8M", price: "Free", link: "https://skibiditech.co/cert/htd_cert.zip" },
+           { name: "ECertificate", category: "Vietnam Electricity", rating: 5, ratingCount: "1.8M", price: "Free", link: "https://skibiditech.co/cert/14.esigncert" },
+            { name: "ECertificate", category: "Kotak Mahindra Bank Ltd", rating: 4.8, ratingCount: "1.2M", price: "Free", link: "https://skibiditech.co/cert/10.esigncert" },
+            { name: "ECertificate", category: "AVEX DIGITAL INC", rating: 4.8, ratingCount: "1.2M", price: "Free", link: "https://skibiditech.co/cert/1.esigncert" },
+            { name: "ECertificate", category: "China Continent Property & Casualty Insurance Company Ltd.", rating: 4.8, ratingCount: "1.1M", price: "Free", link: "https://skibiditech.co/cert/2.esigncert" },
+            { name: "ECertificate", category: "Zhuhaishi ShijiXintong Network Technology Co., Ltd.", rating: 4.8, ratingCount: "900K", price: "Free", link: "https://skibiditech.co/cert/3.esigncert" },
+            { name: "ECertificate", category: "Sun Life Everbright Life Insurance Co.,Ltd", rating: 4.8, ratingCount: "850K", price: "Free", link: "https://skibiditech.co/cert/4.esigncert" },
+            { name: "ECertificate", category: "Ministere de I Emploi de la Protection Sociale.", rating: 4.8, ratingCount: "800K", price: "Free", link: "https://skibiditech.co/cert/5.esigncert" },
+            { name: "ECertificate", category: "Sunshine 1", rating: 4.8, ratingCount: "800K", price: "Free", link: "https://skibiditech.co/cert/6.esigncert" },
+            { name: "ECertificate", category: "Sunshine 2", rating: 4.8, ratingCount: "800K", price: "Free", link: "https://skibiditech.co/cert/7.esigncert" },
+            { name: "ECertificate", category: "Sunshine 3", rating: 4.8, ratingCount: "800K", price: "Free", link: "https://skibiditech.co/cert/8.esigncert" },
+            { name: "ECertificate", category: "Sunshine 4", rating: 4.8, ratingCount: "800K", price: "Free", link: "https://skibiditech.co/cert/9.esigncert" }
+        ];
+
+        function renderApps(containerId, appsData) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = ''; // Clear existing content
+            appsData.forEach(app => {
+                const appItem = document.createElement('div');
+                appItem.className = 'app-item';
+                appItem.innerHTML = `
+                    <img src="./${app.name}.png" alt="${app.name} Icon" class="app-icon">
+                    <div class="app-info">
+                        <h3>${app.name}</h3>
+                        <p>${app.category}</p>
+                        <div class="rating">
+                            <div class="stars">
+                                ${Array.from({ length: 5 }, (_, i) => `<div class="star ${i < Math.floor(app.rating) ? 'filled' : ''}"></div>`).join('')}
+                            </div>
+                            <span class="rating-count">(${app.ratingCount})</span>
+                        </div>
+                    </div>
+                    <button class="get-button" onclick="window.location.href='${app.link}'">${app.price === "Free" ? "GET" : app.price}</button>
+                `;
+                container.appendChild(appItem);
+            });
+        }
+
+        // Navigation functionality
+        const navItems = document.querySelectorAll('.nav-item');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Update active nav item
+                navItems.forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+                
+                // Show corresponding section
+                const sectionId = item.dataset.section;
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === sectionId) {
+                        section.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderApps('downloadEsign', apps);
+            renderApps('downloadCerts', certs);
+        });
+
+        function loadLibraryApps() {
+    fetch(`apps.json?${Math.random()}`)
+        .then(response => response.json())
+        .then(apps => {
+            const container = document.getElementById('ipaLibrary');
+            container.innerHTML = ''; // Clear existing content
+
+            if (apps.length === 0) {
+                container.innerHTML = `<div style="text-align: center; padding: 20px; color: #86868b;">No apps added yet.</div>`;
+                return;
+            }
+
+            apps.forEach(app => {
+                const appItem = document.createElement('div');
+                appItem.className = 'app-item';
+                appItem.innerHTML = `
+                    <img src="${app.icon}" alt="${app.name} Icon" class="app-icon">
+                    <div class="app-info">
+                        <h3>${app.name}</h3>
+                        <p>${app.category}</p>
+                    </div>
+                    <button class="get-button" onclick="window.location.href='${app.link}'">GET</button>
+                `;
+                container.appendChild(appItem);
+            });
+        })
+        .catch(error => {
+            console.error("Error loading apps:", error);
+            document.getElementById('ipaLibrary').innerHTML = `<div style="text-align: center; padding: 20px; color: red;">Failed to load apps.</div>`;
+        });
+}
+
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', loadLibraryApps);
+
+        // File Upload Functionality
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const uploadProgress = document.getElementById('uploadProgress');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const uploadResults = document.getElementById('uploadResults');
+
+        // Detect iOS device
+        function isIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                   (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        }
+
+        // Drag and drop functionality (disabled on iOS)
+        if (!isIOS()) {
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+
+            uploadArea.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                const files = Array.from(e.dataTransfer.files).filter(file => file.name.endsWith('.ipa'));
+                if (files.length > 0) {
+                    handleFileUpload(files);
+                } else {
+                    showUploadResult('❌', 'No IPA files', 'Please select valid IPA files', 'error');
+                }
+            });
+        }
+
+        // File input change handler
+        fileInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            if (files.length > 0) {
+                handleFileUpload(files);
+            }
+        });
+
+        function handleFileUpload(files) {
+            // Clear previous results
+            uploadResults.innerHTML = '';
+            
+            // Show progress
+            uploadProgress.style.display = 'block';
+            progressFill.style.width = '0%';
+            progressText.textContent = 'Preparing upload...';
+
+            // Create FormData object
+            const formData = new FormData();
+            
+            // Add files to FormData
+            Array.from(files).forEach((file, index) => {
+                formData.append('files[]', file);
+            });
+
+            // Create XMLHttpRequest for upload with progress tracking
+            const xhr = new XMLHttpRequest();
+            
+            // Track upload progress
+            xhr.upload.addEventListener('progress', (e) => {
+                if (e.lengthComputable) {
+                    const percentComplete = (e.loaded / e.total) * 100;
+                    progressFill.style.width = percentComplete + '%';
+                    progressText.textContent = `Uploading... ${Math.round(percentComplete)}%`;
+                }
+            });
+            
+            // Handle upload completion
+            xhr.addEventListener('load', () => {
+                uploadProgress.style.display = 'none';
+                
+                if (xhr.status === 200) {
+                    try {
+                        const response = JSON.parse(xhr.responseText);
+                        processUploadResponse(response);
+                    } catch (error) {
+                        showUploadResult('❌', 'Server Error', 'Invalid response from server', 'error');
+                    }
+                } else {
+                    showUploadResult('❌', 'Upload Failed', `Server returned status: ${xhr.status}`, 'error');
+                }
+            });
+            
+            // Handle upload errors
+            xhr.addEventListener('error', () => {
+                uploadProgress.style.display = 'none';
+                showUploadResult('❌', 'Network Error', 'Failed to connect to server', 'error');
+            });
+            
+            // Send the request
+            xhr.open('POST', 'https://sign.skibiditech.co/upload_ipa.php');
+            xhr.send(formData);
+        }
+
+        function processUploadResponse(response) {
+            // Show uploaded files
+            if (response.data && response.data.uploaded_files) {
+                response.data.uploaded_files.forEach((file, index) => {
+                    setTimeout(() => {
+                        showUploadResult('✅', file.original_name, `Successfully uploaded (${formatFileSize(file.size)})`, 'success', response.name);
+                    }, index * 200);
+                });
+            }
+            
+            // Show errors
+            if (response.data && response.data.errors) {
+                response.data.errors.forEach((error, index) => {
+                    setTimeout(() => {
+                        showUploadResult('❌', 'Error', error, 'error');
+                    }, (response.data.uploaded_files ? response.data.uploaded_files.length : 0) * 200 + index * 200);
+                });
+            }
+            
+            // Refresh the library if files were uploaded successfully
+            if (response.success && response.data.total_uploaded > 0) {
+                setTimeout(() => {
+                    loadLibraryApps();
+                }, 1000);
+            }
+        }
+
+       async function sign(id) {
+            const selectedCert = document.getElementById("certs").value;
+            // remove those elements
+            var signButton = document.getElementById("sign_button");
+            document.getElementById("certs").style.display = "none";
+            signButton.style.display = "none";
+            // start signing
+            const status = await fetch(`https://sign.skibiditech.co/sign.php?app=${id}&cert=${selectedCert}&rid=${Math.random()}`, {method: "POST"});
+            const json = JSON.parse(await status.text());
+            if (json.state) {
+                signButton.style.display = "block";
+                signButton.innerText = "Install";
+
+                signButton.onclick = function () {
+                    const manifestUrl = `https://sign.skibiditech.co/generate_plist.php?app=${id}&rid=${Math.random()}`;
+
+                    const a = document.createElement("a");
+                    a.href = `itms-services://?action=download-manifest&url=${encodeURIComponent(manifestUrl)}`;
+                    a.style.display = "none";
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                };
+            } else {
+                alert(json.state);
+            }
+        }
+
+        function showUploadResult(icon, name, status, type, id) {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'upload-result-item';
+            resultItem.innerHTML = `
+                <div class="upload-result-icon">${icon}</div>
+                <div class="upload-result-info">
+                    <div class="upload-result-name">${name}</div>
+                    <div class="upload-result-status ${type}">${status}</div>
+                      <select name="certs" id="certs">
+                        <option value="1">DTT</option>
+  </select>
+                   <button onclick="sign('${id}')" id="sign_button">Sign</button>
+                </div>
+            `;
+            uploadResults.appendChild(resultItem);
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+    </script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CBSYVNWVSE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CBSYVNWVSE');
+    </script>
+</body>
+</html>
