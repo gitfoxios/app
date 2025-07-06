@@ -181,8 +181,9 @@
   </main>
 
   <script>
+    // The app, certificate, DNS, and other data
     const apps = [
-      {
+            {
         name: 'TrollStoreX',
         url: 'itms-services://?action=download-manifest&url=https://skibiditech.co/12.plist',
         img: 'https://raw.githubusercontent.com/alfiecg24/TrollInstallerX/main/Resources/Icon.png',
@@ -358,9 +359,8 @@
         descriptions: 'Sunshin 2'
     }
     ];
-
     const certificates = [
-      {
+       {
         name: 'Khoindvn',
         url: 'https://github.com/esigncert/khoindvn/raw/refs/heads/main/document/DNS/Certs-Khoindvn.zip',
         img: 'https://khoindvn.io.vn/img/pf/profile-pic.png',
@@ -372,10 +372,9 @@
         img: 'https://khoindvn.io.vn/img/pf/ksign.png',
         descriptions: 'National Science Library,Chinese Academy  of Sciences'
       }
-    ];
-
+    ]; 
     const dns = [
-      {
+          {
         name: 'Khoindvn DNS',
         url: 'https://khoindvn.io.vn/document/DNS/signed_khoindvn.mobileconfig',
         img: 'https://khoindvn.io.vn/img/pf/ksign.png',
@@ -392,11 +391,10 @@
         url: 'https://raw.githubusercontent.com/lfwm/lfwm.github.io/refs/heads/main/DNS/NezusiOS18.mobileconfig',
         img: 'https://i.imgur.com/i88ipCA.jpeg',
         descriptions: 'Custom DNS Settings'
-      },
+      },  
     ];
-
     const otherApps = [
-       {
+           {
         name: 'Codex',
         url: 'itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fcodex-ios.com%2FInstall.plist',
         img: 'https://i.imgur.com/i88ipCA.jpeg',
@@ -413,12 +411,12 @@
         url: 'itms-services://?action=download-manifest&url=https://krnl-ios.com/Install2.plist',
         img: 'https://i.imgur.com/i88ipCA.jpeg',
         descriptions: 'New Certificate',
-      }
-    ];
+      }  
+    ]; 
 
     function renderSection(data, containerId) {
       const container = document.getElementById(containerId);
-      container.innerHTML = ''; // Clear previous
+      container.innerHTML = '';
       data.forEach(app => {
         const div = document.createElement('div');
         div.className = 'card';
