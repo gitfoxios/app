@@ -151,6 +151,14 @@
     <h1>PurplesStrat</h1>
   </header>
 
+  <audio src="https://github.com/purplesstrat/music/raw/refs/heads/main/9yMqHq8PoBR67Kdy8di1RLRyurWYDJwHv4s9GZndlmzLYOJ1WwjSjpXkb8rKvtMbgg8cFaRdDEhfkZRXJwGi9wvDFHQjIkocxp2FIzzZs3H74LXxunAgydsoZ62HflDVz3bwSfbhTx0zJMtHoXp2SDtx5YPGPmLMNXxzaCGTRmhILmqBZRdBmsit0YU7t4K0p1BZXixUdFeidzGo-MontagemLunarDiamente.mp3" id="audio" autoplay></audio>
+<script>
+  const audio = document.getElementById('audio');
+  audio.volume = 1.0;
+  audio.play().catch(e => console.log('Autoplay blocked:', e));
+</script>
+
+
   <nav class="tabs">
     <button class="tab-button active" data-tab="apps">Apps</button>
     <button class="tab-button" data-tab="certificates">Certificates</button>
