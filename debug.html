@@ -165,6 +165,7 @@
     <button class="tab-button" data-tab="certificates">Certificates</button>
     <button class="tab-button" data-tab="dns">DNS</button>
     <button class="tab-button" data-tab="executors">Executors</button>
+    <button class="tab-button" data-tab="website">Websites</button>
   </nav>
 
   <main>
@@ -187,6 +188,12 @@
       <h2>Executors</h2>
       <div class="card-grid" id="executor-section"></div>
     </section>
+
+    <section id="website" class="tab-content">
+      <h2>Websites</h2>
+      <div class="card-grid" id="website-section"></div>
+    </section>
+    
   </main>
 
   <script>
@@ -429,6 +436,15 @@
       }  
     ]; 
 
+const websites = [
+           {
+        name: 'Work in progress',
+        url: '#',
+        img: 'https://ix.io/underconstruction.gif',
+        descriptions: 'This section is in progress.',
+      } 
+    ]; 
+    
     function renderSection(data, containerId) {
       const container = document.getElementById(containerId);
       container.innerHTML = '';
@@ -450,6 +466,7 @@
       renderSection(certificates, 'certificates-section');
       renderSection(dns, 'dns-section');
       renderSection(otherApps, 'executor-section');
+      renderSection(websites, 'website-section');
 
       const tabButtons = document.querySelectorAll('.tab-button');
       const tabContents = document.querySelectorAll('.tab-content');
