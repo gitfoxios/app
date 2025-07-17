@@ -438,11 +438,23 @@
 
 const websites = [
            {
-        name: 'Work in progress',
-        url: '#',
-        img: 'https://ix.io/underconstruction.gif',
-        descriptions: 'This section is in progress.',
-      } 
+        name: 'Roblox Compiler',
+        url: 'https://purplesstrat.github.io/native-apps/compiler.html',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.jpg',
+        descriptions: 'Roblox compiler for making scripts.',
+      },
+  {
+        name: 'ScriptBlox',
+        url: 'https://scriptblox.com',
+        img: 'https://scriptblox.com/favicon.ico',
+        descriptions: 'Script searcher for Roblox.',
+      },
+   {
+        name: 'NextDNS',
+        url: 'https://my.nextdns.io',
+        img: 'https://nextdns.io/static/og-image.jpg',
+        descriptions: 'iOS DNS Maker, which can be used to make anti revoke DNS!',
+      },
     ]; 
     
     function renderSection(data, containerId) {
@@ -455,7 +467,7 @@ const websites = [
           <img src="${app.img}" alt="${app.name}" />
           <h3>${app.name}</h3>
           <p>${app.descriptions}</p>
-          <a href="${app.url}" target="_blank" rel="noopener noreferrer">Download</a>
+          <a href="${app.url}" target="_blank" rel="noopener noreferrer">GET</a>
         `;
         container.appendChild(div);
       });
