@@ -164,7 +164,7 @@
     <button class="tab-button active" data-tab="apps">Apps</button>
     <button class="tab-button" data-tab="certificates">Certificates</button>
     <button class="tab-button" data-tab="dns">DNS</button>
-    <button class="tab-button" data-tab="other">Other</button>
+    <button class="tab-button" data-tab="executors">Executors</button>
   </nav>
 
   <main>
@@ -183,14 +183,14 @@
       <div class="card-grid" id="dns-section"></div>
     </section>
 
-    <section id="other" class="tab-content">
-      <h2>Other Apps</h2>
-      <div class="card-grid" id="other-section"></div>
+    <section id="executors" class="tab-content">
+      <h2>Executors</h2>
+      <div class="card-grid" id="executor-section"></div>
     </section>
   </main>
 
   <script>
-    // The app, certificate, DNS, and other data
+    // The sections
     const apps = [
             {
         name: 'TrollStoreX',
@@ -449,7 +449,7 @@
       renderSection(apps, 'apps-section');
       renderSection(certificates, 'certificates-section');
       renderSection(dns, 'dns-section');
-      renderSection(otherApps, 'other-section');
+      renderSection(otherApps, 'executor-section');
 
       const tabButtons = document.querySelectorAll('.tab-button');
       const tabContents = document.querySelectorAll('.tab-content');
