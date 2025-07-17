@@ -506,21 +506,35 @@ const websites = [
   <button onclick="enterSite()" style="padding: 12px 24px; font-size: 18px; border: none; border-radius: 8px; background-color: white; color: black; cursor: pointer;">Enter</button>
 </div>
 
-
-<audio id="bg-music" loop>
-  <source src="https://github.com/purplesstrat/music/raw/refs/heads/main/9yMqHq8PoBR67Kdy8di1RLRyurWYDJwHv4s9GZndlmzLYOJ1WwjSjpXkb8rKvtMbgg8cFaRdDEhfkZRXJwGi9wvDFHQjIkocxp2FIzzZs3H74LXxunAgydsoZ62HflDVz3bwSfbhTx0zJMtHoXp2SDtx5YPGPmLMNXxzaCGTRmhILmqBZRdBmsit0YU7t4K0p1BZXixUdFeidzGo-MontagemLunarDiamente.mp3" type="audio/mpeg">
- Uncaught error: Your browser does not support the audio element.
-</audio>
+<audio id="bg-music" loop></audio>
 
 <script>
+  const playlist = [
+    "https://github.com/purplesstrat/music/raw/refs/heads/main/9yMqHq8PoBR67Kdy8di1RLRyurWYDJwHv4s9GZndlmzLYOJ1WwjSjpXkb8rKvtMbgg8cFaRdDEhfkZRXJwGi9wvDFHQjIkocxp2FIzzZs3H74LXxunAgydsoZ62HflDVz3bwSfbhTx0zJMtHoXp2SDtx5YPGPmLMNXxzaCGTRmhILmqBZRdBmsit0YU7t4K0p1BZXixUdFeidzGo-MontagemLunarDiamente.mp3",
+    "https://github.com/purplesstrat/music/raw/refs/heads/main/%5BRelease%20-%20Topic%5D%20Montagem%20Lunar%20Diamante%202.mp3",
+    "https://github.com/purplesstrat/music/raw/refs/heads/main/%5BRelease%20-%20Topic%5D%20Montagem%20Lunar%20Diamante%203.mp3",
+    "https://github.com/purplesstrat/music/raw/refs/heads/main/%5BRelease%20-%20Topic%5D%20SARAVIA%20FUNK.mp3",
+    "https://github.com/purplesstrat/music/raw/refs/heads/main/%5Brepsaj%5D%20MONTAGEM%20BAIL%C3%83O.mp3"
+  ];
+
+  let currentTrack = 0;
+  const audio = document.getElementById('bg-music');
+
+  audio.addEventListener('ended', () => {
+    currentTrack = (currentTrack + 1) % playlist.length;
+    audio.src = playlist[currentTrack];
+    audio.play().catch(err => console.warn("Play failed:", err));
+  });
+
   function enterSite() {
     document.getElementById('enter-screen').style.display = 'none';
-    const music = document.getElementById('bg-music');
-    music.play().catch(err => {
+    audio.src = playlist[currentTrack];
+    audio.play().catch(err => {
       console.warn("Autoplay failed:", err);
     });
   }
 </script>
+
 
 </body>
 </html>
