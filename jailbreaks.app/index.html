@@ -340,15 +340,27 @@
 		<script src="https://jailbreaks.app/js/inobounce.js"></script>
 		<script type="text/javascript">
             let version = "v4.0"
-			if (navigator.userAgent.match(/iPad|iPhone|iPod/i)) {
-                let osVersion = ((navigator.userAgent).match(/OS (\d)?\d_\d(_\d)?/i)[0].replace(/_/g, ".").replace("OS", "iOS"))
-                document.getElementById("info_label").innerHTML = osVersion + " - Jailbreaks.app " + version;
-                document.getElementById("about-os-version").innerHTML = osVersion;
-            } else {
-                document.getElementById("settings-about").children["2"].style.display = "none";
-				document.getElementById("info_label").innerHTML = "Jailbreaks.app " + version;
-				//$$('#info_label').css('margin-bottom', '-36px');
-			}
+			const ua = navigator.userAgent;
+
+if (/iPad|iPhone|iPod/i.test(ua)) {
+ 
+  let osVersionMatch = ua.match(/OS (\d+_\d+(_\d+)?)/i);
+  let osVersion = osVersionMatch ? osVersionMatch[1].replace(/_/g, ".") : "iOS";
+
+  document.getElementById("info_label").innerHTML = osVersion + " - Jailbreaks.app " + version;
+  document.getElementById("about-os-version").innerHTML = osVersion;
+
+} else if (/Windows NT/i.test(ua)) {
+ 
+  document.getElementById("info_label").innerHTML = "Windows - Jailbreaks.app " + version;
+  document.getElementById("settings-about").children[2].style.display = "none";
+
+} else {
+
+  document.getElementById("info_label").innerHTML = "Jailbreaks.app " + version;
+  document.getElementById("settings-about").children[2].style.display = "none";
+}
+
             document.getElementById("about-version").innerHTML = version;
 		</script>
 		<noscript>
