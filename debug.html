@@ -600,9 +600,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function loadAndPlayTrack(index) {
     audio.src = playlist[index];
     audio.load();
-    audio.play().catch(err => {
-      console.warn(`Failed to play track ${index}:`, err);
-    });
+    audio.oncanplaythrough = () => {
+      audio.play().catch(err => {
+        console.warn(`Play failed for track ${index}:`, err);
+      });
+    };
   }
 
   audio.addEventListener('ended', () => {
@@ -615,6 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadAndPlayTrack(currentTrack);
   };
 });
+
 
 </script>
 
