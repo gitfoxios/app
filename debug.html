@@ -585,6 +585,7 @@ const websites = [
 <audio id="bg-music" loop></audio>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
   const playlist = [
     "https://github.com/purplesstrat/music/raw/refs/heads/main/9yMqHq8PoBR67Kdy8di1RLRyurWYDJwHv4s9GZndlmzLYOJ1WwjSjpXkb8rKvtMbgg8cFaRdDEhfkZRXJwGi9wvDFHQjIkocxp2FIzzZs3H74LXxunAgydsoZ62HflDVz3bwSfbhTx0zJMtHoXp2SDtx5YPGPmLMNXxzaCGTRmhILmqBZRdBmsit0YU7t4K0p1BZXixUdFeidzGo-MontagemLunarDiamente.mp3",
     "https://github.com/purplesstrat/music/raw/refs/heads/main/%5BRelease%20-%20Topic%5D%20Montagem%20Lunar%20Diamante%202.mp3",
@@ -593,22 +594,28 @@ const websites = [
     "https://github.com/purplesstrat/music/raw/refs/heads/main/%5Brepsaj%5D%20MONTAGEM%20BAIL%C3%83O.mp3"
   ];
 
-  let currentTrack = 0;
+  let currentTrack = Math.floor(Math.random() * playlist.length);
   const audio = document.getElementById('bg-music');
+
+  function loadAndPlayTrack(index) {
+    audio.src = playlist[index];
+    audio.load();
+    audio.play().catch(err => {
+      console.warn(`Failed to play track ${index}:`, err);
+    });
+  }
 
   audio.addEventListener('ended', () => {
     currentTrack = (currentTrack + 1) % playlist.length;
-    audio.src = playlist[currentTrack];
-    audio.play().catch(err => console.warn("Play failed:", err));
+    loadAndPlayTrack(currentTrack);
   });
 
-  function enterSite() {
+  window.enterSite = function () {
     document.getElementById('enter-screen').style.display = 'none';
-    audio.src = playlist[currentTrack];
-    audio.play().catch(err => {
-      console.warn("Autoplay failed:", err);
-    });
-  }
+    loadAndPlayTrack(currentTrack);
+  };
+});
+
 </script>
 
 
