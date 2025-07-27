@@ -166,6 +166,7 @@
     <button class="tab-button" data-tab="dns">DNS</button>
     <button class="tab-button" data-tab="executors">Executors</button>
     <button class="tab-button" data-tab="website">Websites</button>
+    <button class="tab-button" data-tab="ipas">IPAs</button>
   </nav>
 
   <main>
@@ -192,6 +193,11 @@
     <section id="website" class="tab-content">
       <h2>Websites</h2>
       <div class="card-grid" id="website-section"></div>
+    </section>
+    
+    <section id="ipas" class="tab-content">
+      <h2>IPAs</h2>
+      <div class="card-grid" id="ipas-section"></div>
     </section>
     
   </main>
@@ -550,6 +556,27 @@ const websites = [
         descriptions: 'iOS DNS Maker, which can be used to make anti revoke DNS!',
       },
     ]; 
+
+    const ipas = [
+           {
+        name: 'Discord (Revenge)',
+        url: 'https://download1648.mediafire.com/smrbdzokrqugf6sg2I70Y9ggCCXg_57RwrgWr0vdAoLPTSwrldD7i9zANAvLwG_KBhkNzeFVdNcbxQ08wd3zLk1ygNeeisFnsDjEMDOnNab-JQD-CLor8IAxrVkujdJjPXpUuGgzFPSH5ec4IttxSF19VOik-q1tt1gLB8mrHZOmfQ/cgs8oyq95416d2a/Revenge.ipa',
+        img: 'https://github.com/revenge-mod.png',
+        descriptions: 'Revenge Mod for Discord',
+      },
+  {
+        name: 'Discord (Bunny)',
+        url: 'https://download1648.mediafire.com/9i2xn9up8ehgnsP_rkAO7iro-336ANH2AjYPL_UgATKfTPrcppnFoN-ZkHaWU74wKtd5zl2L0h614ByxI1a91LCWYgqStN3aVUxCVPSzo7PiY7MNhqRiPSGKYR-OwfMNJanULwW6RxOw4kQ8Dj0PIgi9wptclTzXyFLjAI66hCJpbg/2t8bfrlykxk2vsy/Bunny.ipa',
+        img: 'https://github.com/bunny-mod.png',
+        descriptions: 'Bunny Mod for Discord',
+      },
+   {
+        name: 'Discord (Enmity)',
+        url: 'https://github.com/enmity-mod/tweak/releases/latest/download/Enmity.ipa',
+        img: 'https://github.com/enmity-mod.png',
+        descriptions: 'Enmity Mod for Discord',
+      },
+    ]; 
     
     function renderSection(data, containerId) {
       const container = document.getElementById(containerId);
@@ -573,6 +600,7 @@ const websites = [
       renderSection(dns, 'dns-section');
       renderSection(otherApps, 'executor-section');
       renderSection(websites, 'website-section');
+      renderSection(ipas, 'ipas-section');
 
       const tabButtons = document.querySelectorAll('.tab-button');
       const tabContents = document.querySelectorAll('.tab-content');
