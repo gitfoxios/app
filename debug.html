@@ -167,6 +167,7 @@
     <button class="tab-button" data-tab="executors">Executors</button>
     <button class="tab-button" data-tab="website">Websites</button>
     <button class="tab-button" data-tab="ipas">IPAs</button>
+    <button class="tab-button" data-tab="jailbreaks">Jailbreaks</button>
   </nav>
 
   <main>
@@ -198,6 +199,11 @@
     <section id="ipas" class="tab-content">
       <h2>IPAs</h2>
       <div class="card-grid" id="ipas-section"></div>
+    </section>
+
+      <section id="jailbreaks" class="tab-content">
+      <h2>Jailbreaks</h2>
+      <div class="card-grid" id="jailbreak-section"></div>
     </section>
     
   </main>
@@ -577,6 +583,14 @@ const websites = [
         descriptions: 'Enmity Mod for Discord',
       },
     ]; 
+    const jailbreaks = [
+           {
+        name: 'WIP',
+        url: '#',
+        img: 'https://ix.io/underconstruction.gif',
+        descriptions: 'This section is WIP.',
+      },
+    ]; 
     
     function renderSection(data, containerId) {
       const container = document.getElementById(containerId);
@@ -601,6 +615,7 @@ const websites = [
       renderSection(otherApps, 'executor-section');
       renderSection(websites, 'website-section');
       renderSection(ipas, 'ipas-section');
+      renderSection(jailbreaks, 'jailbreak-section');
 
       const tabButtons = document.querySelectorAll('.tab-button');
       const tabContents = document.querySelectorAll('.tab-content');
@@ -649,9 +664,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const playlist = [
     "https://github.com/purplesstrat/music/raw/refs/heads/main/9yMqHq8PoBR67Kdy8di1RLRyurWYDJwHv4s9GZndlmzLYOJ1WwjSjpXkb8rKvtMbgg8cFaRdDEhfkZRXJwGi9wvDFHQjIkocxp2FIzzZs3H74LXxunAgydsoZ62HflDVz3bwSfbhTx0zJMtHoXp2SDtx5YPGPmLMNXxzaCGTRmhILmqBZRdBmsit0YU7t4K0p1BZXixUdFeidzGo-MontagemLunarDiamente.mp3",
     "https://github.com/purplesstrat/music/raw/refs/heads/main/%5BRelease%20-%20Topic%5D%20Montagem%20Lunar%20Diamante%202.mp3",
-    "https://github.com/purplesstrat/music/raw/refs/heads/main/%5BRelease%20-%20Topic%5D%20Montagem%20Lunar%20Diamante%203.mp3",
-    "https://github.com/purplesstrat/music/raw/refs/heads/main/%5BRelease%20-%20Topic%5D%20SARAVIA%20FUNK.mp3",
-    "https://github.com/purplesstrat/music/raw/refs/heads/main/%5Brepsaj%5D%20MONTAGEM%20BAIL%C3%83O.mp3"
+    "https://github.com/purplesstrat/music/raw/refs/heads/main/%5BRelease%20-%20Topic%5D%20Montagem%20Lunar%20Diamante%203.mp3"
   ];
 
   let currentTrack = Math.floor(Math.random() * playlist.length);
