@@ -64,6 +64,26 @@
       border-color: var(--accent);
       color: var(--accent);
     }
+.section-label {
+  margin: 20px 0;
+  padding: 10px 16px;
+  background: #111;
+  border-left: 5px solid #ff4dc4;
+  color: white;
+  border-radius: 8px;
+}
+
+.section-label h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.section-label p {
+  margin: 0;
+  font-size: 14px;
+  color: #ccc;
+}
 
     main {
       max-width: 1000px;
@@ -584,6 +604,8 @@ const websites = [
       },
     ]; 
     const jailbreaks = [
+
+      { label: true, title: "Testing", contents: "This is a label and is being used for a test." },
            {
         name: 'WIP',
         url: '#',
@@ -593,20 +615,31 @@ const websites = [
     ]; 
     
     function renderSection(data, containerId) {
-      const container = document.getElementById(containerId);
-      container.innerHTML = '';
-      data.forEach(app => {
-        const div = document.createElement('div');
-        div.className = 'card';
-        div.innerHTML = `
-          <img src="${app.img}" alt="${app.name}" />
-          <h3>${app.name}</h3>
-          <p>${app.descriptions}</p>
-          <a href="${app.url}" target="_blank" rel="noopener noreferrer">GET</a>
-        `;
-        container.appendChild(div);
-      });
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+  data.forEach(app => {
+    const div = document.createElement('div');
+
+    // Handle label entries
+    if (app.label) {
+      div.className = 'section-label';
+      div.innerHTML = `
+        <h2>${app.title}</h2>
+        <p>${app.contents}</p>
+      `;
+    } else {
+      div.className = 'card';
+      div.innerHTML = `
+        <img src="${app.img}" alt="${app.name}" />
+        <h3>${app.name}</h3>
+        <p>${app.descriptions}</p>
+        <a href="${app.url}" target="_blank" rel="noopener noreferrer">GET</a>
+      `;
     }
+
+    container.appendChild(div);
+  });
+}
 
     document.addEventListener("DOMContentLoaded", () => {
       renderSection(apps, 'apps-section');
