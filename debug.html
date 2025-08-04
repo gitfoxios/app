@@ -188,6 +188,7 @@
     <button class="tab-button" data-tab="website">Websites</button>
     <button class="tab-button" data-tab="ipas">IPAs</button>
     <button class="tab-button" data-tab="jailbreaks">Jailbreaks</button>
+    <button class="tab-button" data-tab="apple-apps">Apple Apps</button>
   </nav>
 
   <main>
@@ -224,6 +225,11 @@
       <section id="jailbreaks" class="tab-content">
       <h2>Jailbreaks</h2>
       <div class="card-grid" id="jailbreak-section"></div>
+    </section>
+
+    <section id="apple-apps" class="tab-content">
+      <h2>Apple Apps</h2>
+      <div class="card-grid" id="apple-section"></div>
     </section>
     
   </main>
@@ -619,6 +625,40 @@ const websites = [
         descriptions: 'Unc0ver Jailbreak.',
       },
     ]; 
+
+     const apple = [
+           {
+        name: 'Face ID',
+        url: 'https://download1479.mediafire.com/31rki5szsk9gh78ODYhr4gV2qYFK2DfWC7ObfyV238j_HOvfyDkgFnX3GmazAufR76gjKyUDW5NSmci8EuQZ6l-BhQh_MclHLMJJcgL3TCekA1iwyROL8cIcYYDB40mtonBrYvEkyS0ZS04hdU-HUMiD2El2spMFW-W6cqltFvfEVA/yixwy3ti0fwj7hu/Face+ID_2.0.0_1754322687.ipa',
+        img: 'https://www.theiphonewiki.com/w/images/thumb/7/75/Face_ID_Icon.png/177px-Face_ID_Icon.png',
+        descriptions: 'Face ID App',
+      },
+  {
+        name: 'DemoLoop',
+        url: 'https://download1509.mediafire.com/wk0qnre4jkggUkg2_-G0P83mkNgH4eHAcN2gyrrYM0FkXKpeEKCD_eUIkXg9Vi6OsGNySGl2XqkUDPISv05F-_DiW7IihFd5zmJFaYd2TEYJLLF8_1s8hEdI3LqS2aJLsBE46vyMhrWn-ZTk3OVlcAMGmqIyeHSSHK_TlD8PADoOPw/itcgesnvz7yrv3x/DemoLoop_7.4_1754322656.ipa',
+        img: 'https://i.imgur.com/MMMcgNV.png',
+        descriptions: 'DemoLoop app.',
+      },
+   {
+        name: 'DemoLoop 2',
+        url: 'https://download1589.mediafire.com/etgac7b5z5tg_6vGu2YTkljTmhDYk72lq9uNYI79yUugFAxFCTGCV0wKuCN8VSntCmxefysxzNGMLZ-NpiTlwYy271HZ0Xv873rqju50fnrR7Narl95DqHtI0f9DX1UpotocamWAnXtlt3kY0xqnkb8PA8MOeQDRKvOd_h4na9VP-Q/kyt59mgt3a937nu/DemoLoop_1.3.0_1754322491Official.ipa',
+        img: 'https://i.imgur.com/MMMcgNV.png',
+        descriptions: 'DemoLoop second version if first one does not work.',
+      },
+       {
+        name: 'Meet iPhone',
+        url: 'https://download1339.mediafire.com/v71ouavhg4lgqvUkJLCntZV2RR5szAplUG0PYaHBiQEUrKhPJzUwqivNS65nsdIFAm9u5cCbV-jKyZjl01WgAJUiGTGST-QrbZg1ByNiyvfqfzpTyPah7CeNVdHNJiX3CcM0K3b2HTSZD6rBYIShEirVncS-uic_1EGE8Kck17ClXA/yda1etj72jup427/Meet+iPhone_4.4.0.8_1754322641.ipa',
+        img: 'https://i.imgur.com/Ge1SkCy.png',
+        descriptions: 'Meet iPhone app.',
+      },
+       {
+        name: 'Touch ID',
+        url: 'https://download1979.mediafire.com/4gbnvnfv38zgFSRpdRdOqrMxOKN_hEsXiXDHsWR6z_HFoKVWhx2U42o4gyiS4KKUaFBBoQFhmffCUA_9cGoRFGXBmpqXBHeZA2jmB4hqcBfxeSa6pCJwYeO79g2RC8mnAtW2Sq3KuMQdPV90E4PLeVGOowXLN501jdJb3QXwH1nFOQ/0y1ghp3mnhc617u/Touch+ID_3.2.0_1754322645.ipa',
+        img: 'https://i.imgur.com/MMMcgNV.png',
+        descriptions: 'Touch ID App',
+      },
+      
+    ]; 
     
     function renderSection(data, containerId) {
   const container = document.getElementById(containerId);
@@ -655,6 +695,7 @@ const websites = [
       renderSection(websites, 'website-section');
       renderSection(ipas, 'ipas-section');
       renderSection(jailbreaks, 'jailbreak-section');
+      renderSection(apple, 'apple-section');
 
       const tabButtons = document.querySelectorAll('.tab-button');
       const tabContents = document.querySelectorAll('.tab-content');
