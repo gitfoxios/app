@@ -18,7 +18,7 @@
      <key>PayloadUUID</key><string>fbc1c989-f946-4902-b672-93d7986955c6</string>
      <key>PayloadVersion</key><integer>1</integer>
      <key>Precomposed</key><false/>
-     <key>URL</key><string>https://purplesstrat.github.io/app</string>
+     <key>URL</key><string>https://purplesstrat.github.io/app/debug.html</string>
    </dict>
  </array>
  <key>PayloadDisplayName</key><string>PurplesStrat iOS</string>
