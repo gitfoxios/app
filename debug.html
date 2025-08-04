@@ -181,6 +181,7 @@
 
 
   <nav class="tabs">
+    <button class="tab-button active" data-tab="news">News</button>
     <button class="tab-button active" data-tab="apps">Apps</button>
     <button class="tab-button" data-tab="certificates">Certificates</button>
     <button class="tab-button" data-tab="dns">DNS</button>
@@ -192,6 +193,11 @@
   </nav>
 
   <main>
+    <section id="news" class="tab-content">
+      <h2>News</h2>
+      <div class="card-grid" id="news-section"></div>
+    </section>
+    
     <section id="apps" class="tab-content active">
       <h2>Apps</h2>
       <div class="card-grid" id="apps-section"></div>
@@ -235,7 +241,13 @@
   </main>
 
   <script>
-    // The sections
+const news = [
+{ label: true, title: "Update 2", contents: "Added Apple apps." },
+      { label: true, title: "Update 1", contents: "This section will contain the latest updates." },
+      
+    ]; 
+
+    
     const apps = [
       {
         name: 'ESign',
@@ -352,7 +364,7 @@
         descriptions: 'CHIBA INSTITUTE OF TECHNOLOGY'   
     },
     {
-        name: 'KSign Chiaba V2',
+        name: 'KSign Chiba V2',
         url: 'https://i.loadly.io/kSkjPMhv',
         img: 'img/pf/ksign.png',
         descriptions: 'CHIBA INSTITUTE OF TECHNOLOGY'   
@@ -654,7 +666,7 @@ const websites = [
        {
         name: 'Touch ID',
         url: 'https://download1979.mediafire.com/4gbnvnfv38zgFSRpdRdOqrMxOKN_hEsXiXDHsWR6z_HFoKVWhx2U42o4gyiS4KKUaFBBoQFhmffCUA_9cGoRFGXBmpqXBHeZA2jmB4hqcBfxeSa6pCJwYeO79g2RC8mnAtW2Sq3KuMQdPV90E4PLeVGOowXLN501jdJb3QXwH1nFOQ/0y1ghp3mnhc617u/Touch+ID_3.2.0_1754322645.ipa',
-        img: 'https://i.imgur.com/MMMcgNV.png',
+        img: 'https://i.imgur.com/gSI1mfY.png',
         descriptions: 'Touch ID App',
       },
       
@@ -688,6 +700,7 @@ const websites = [
 }
 
     document.addEventListener("DOMContentLoaded", () => {
+      renderSection(news, 'news-section');
       renderSection(apps, 'apps-section');
       renderSection(certificates, 'certificates-section');
       renderSection(dns, 'dns-section');
@@ -696,6 +709,7 @@ const websites = [
       renderSection(ipas, 'ipas-section');
       renderSection(jailbreaks, 'jailbreak-section');
       renderSection(apple, 'apple-section');
+
 
       const tabButtons = document.querySelectorAll('.tab-button');
       const tabContents = document.querySelectorAll('.tab-content');
