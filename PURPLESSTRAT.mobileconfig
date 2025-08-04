@@ -23,7 +23,7 @@
  </array>
  <key>PayloadDisplayName</key><string>PurplesStrat iOS</string>
  <key>PayloadIdentifier</key><string>com.webclip.profile.PurplesStratiOS</string>
- <key>PayloadOrganization</key><string>WebClip Generator</string>
+ <key>PayloadOrganization</key><string>AUDI AG</string>
  <key>PayloadRemovalDisallowed</key><false/>
  <key>PayloadType</key><string>Configuration</string>
  <key>PayloadUUID</key><string>41ee47a7-71a5-4ae5-a293-4bff21ee6888</string>
